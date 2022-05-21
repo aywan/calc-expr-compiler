@@ -20,7 +20,7 @@ class Tokenizer
             $c = $source[$i];
 
             switch (true) {
-                case $c === ' ':
+                case $c === ' ' || $c === "\n" || $c === "\r":
                     if ($state === TokenType::SPACE) {
                         $buf .= $c;
                     } else {
@@ -32,7 +32,7 @@ class Tokenizer
                     break;
 
                 case ctype_digit($c):
-                    if ($state === TokenType::NAME || $state=== TokenType::NUMBER) {
+                    if ($state === TokenType::NAME || $state === TokenType::NUMBER) {
                         $buf .= $c;
                     } else {
                         $list->pushToken($state, $buf, $position);
@@ -53,7 +53,7 @@ class Tokenizer
                     }
                     break;
 
-                case in_array($c, ['+','-','*','/','^', '.', ',', '(', ')', '%'], true):
+                case in_array($c, ['+', '-', '*', '/', '^', '.', ',', '(', ')', '%'], true):
                     $list->pushToken($state, $buf, $position);
                     $buf = $c;
                     $state = TokenType::SEP;

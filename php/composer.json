@@ -1,13 +1,13 @@
 {
-    "name": "aywan/calc-expr-compiler",
-    "type": "project",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Aywan\\CalcExprCompiler\\": "src/"
-        }
-    },
-    "require": {
-        "php": "^8.1"
+  "name": "aywan/calc-expr-compiler",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Aywan\\CalcExprCompiler\\": "src/"
     }
+  },
+  "require": {
+    "php": "^8.1"
+  }
 }

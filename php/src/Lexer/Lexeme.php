@@ -7,8 +7,8 @@ class Lexeme
 {
     public function __construct(
         public readonly LexemeType $type,
-        public readonly string $value,
-        public readonly int $position,
+        public readonly string     $value,
+        public readonly int        $position,
     )
     {
     }

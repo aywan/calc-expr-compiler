@@ -10,7 +10,15 @@ foreach (glob('./src/*/*.php') as $file) {
 }
 
 $tokenizer = new \app\Tokenizer\Tokenizer();
-$tokens = $tokenizer->toToken('-2 + (-2 // 4) + (-(-16 % 10)) (2.55+1.150)  * 10 - (1 / 5 + 0.8 - 16 ^ 0.5) ^ 2.0 - sin(pi/2) + cos(sin(0.0/210)) + atan2(0**2, 1)'); // 25
+$tokens = $tokenizer->toToken(<<<EXPR
+-2 + (-2 // 4) 
++ (-(-16 % 10)) 
++ (2.55+1.150)  * 10 
+- (1 / 5 + 0.8 - 16 ^ 0.5) ^ 2.0 
+- sin(pi/2) + cos(sin(0.0/210)) 
++ atan2(0**2, 1)
+EXPR
+);
 $lexer = new \app\Lexer\Lexer();
 $lexemes = $lexer->parse($tokens);
 foreach ($lexemes->lexemes as $item) {
